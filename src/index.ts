@@ -1,7 +1,7 @@
 import "./assets/css/normalize.css";
 
 import { getUsers } from "./users";
-
+import { initialize } from "@flexiformal/ftml"
 export async function printUsers(): Promise<HTMLElement> {
 	const users = await getUsers();
 	const element = document.createElement("div");
@@ -14,3 +14,13 @@ export async function printUsers(): Promise<HTMLElement> {
 printUsers()
 	.then((element) => document.body.appendChild(element))
 	.catch(() => console.error("Something went wrong"));
+const initStartTime = Date.now();
+let flamsInitialized = false;
+initialize("https://mathhub.info", 'WARN')
+	.then(() => {
+		console.log('FTML initialized: ', Date.now() - initStartTime, 'ms');
+		flamsInitialized = true;
+	})
+	.catch((err) => {
+		console.error(`FTML initialization failed: [https://mathhub.info]`, err);
+	});
