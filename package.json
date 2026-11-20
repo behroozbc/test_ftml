@@ -57,6 +57,7 @@
   ],
   "dependencies": {
     "@flexiformal/ftml": "^0.0.34",
+    "@flexiformal/ftml-backend": "^0.0.14",
     "http-server": "^0.12.3"
   }
 }
